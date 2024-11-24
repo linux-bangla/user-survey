@@ -1,0 +1,55 @@
+---
+# this will install docker and docker compose
+# variables are in the group_vars all
+- name: Install docker dependencies
+  ansible.builtin.apt:
+    update_cache: true
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+    state: present
+
+- name: Add docker gpg key
+  ansible.builtin.apt_key:
+    url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+    state: present
+
+- name: Set up docker repository
+  apt_repository:
+    repo: "deb [arch={{ deb_architecture }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: Install docker and docker compose plugin
+  ansible.builtin.apt:
+    update_cache: true
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - apparmor-utils
+      - docker-compose-plugin
+    state: present # use 'latest' for updating docker to latest version
+
+- name: Enable IPv6 for docker service
+  ansible.builtin.template:
+    dest: /etc/docker/daemon.json
+    src: templates/docker/daemon.json.j2
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Start docker service
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Make symbolic link from docker compose plugin to docker compose script location for backwards compatibility
+  ansible.builtin.file:
+    src: /usr/libexec/docker/cli-plugins/docker-compose
+    dest: /usr/local/bin/docker-compose
+    owner: root
+    group: root
+    state: link
