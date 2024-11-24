@@ -1,0 +1,39 @@
+[inventory]
+cache=True
+
+[defaults]
+inventory=inventory
+private_key_file=~/.ssh/key
+# custome config
+# mkdir -p ./.ansible/{roles,collections,logs,cache}
+roles_path=./.ansible/roles
+collections_path=./.ansible/collections
+log_path=./.ansible/logs/log
+vault_password_file=/etc/ansible/vault.txt
+gathering=smart
+fact_caching=yaml
+# fact_caching_connection=/etc/ansible/cache
+fact_caching_connection=./.ansible/cache
+fact_caching_timeout=86400
+gathering=smart
+nocows=1
+forks=15
+become_method=sudo
+become_user=root
+timeout=120
+retry_files_enabled=False
+interpreter_python=/usr/bin/python3
+transport = ssh
+internal_poll_interval=0.001
+callback_enabled = profile_tasks
+
+[ssh_connection]
+pipelining=True
+
+[colors]
+error=bright red
+
+[privilege_escalation]
+become=True
+become_method=sudo
+become_user=root
