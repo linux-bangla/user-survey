@@ -1,0 +1,20 @@
+---
+- name: Standard roles and tasks
+  hosts: all
+  strategy: free
+  gather_facts: true
+  # roles:
+  #   - hifis.unattended_upgrades
+
+  tasks:
+    - name: Get server architecture from facts, with an if in case of x86_64 arch
+      set_fact:
+        deb_architecture: "{{ 'amd64' if ansible_architecture == 'x86_64' else ansible_architecture }}"
+    - name: Install common packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ common_packages }}"
+    - name: Install docker tools
+      ansible.builtin.include_tasks: tasks/docker.yml
+      tags: docker
