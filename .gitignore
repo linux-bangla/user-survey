@@ -1,1 +1,2 @@
 provision/ansible/.ansible/*
+provision/ansible/ansible.cfg
