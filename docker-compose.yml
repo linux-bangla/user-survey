@@ -63,7 +63,7 @@ configs:
 volumes: # If you want to store the data on a different drive, see https://github.com/nextcloud/all-in-one#how-to-store-the-filesinstallation-on-a-separate-drive
   nextcloud_aio_mastercontainer:
     name: nextcloud_aio_mastercontainer # This line is not allowed to be changed as otherwise the built-in backup solution will not work
-  # caddy_certs:
-  # caddy_config:
-  # caddy_data:
-  # caddy_sites:
+  caddy_certs:
+  caddy_config:
+  caddy_data:
+  caddy_sites:
