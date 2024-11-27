@@ -57,7 +57,7 @@ configs:
     content: |
       # Adjust cloud.example.com to your domain below
       https://linux-bangla.root-servers.xyz:443 {
-        reverse_proxy localhost:11000
+        reverse_proxy nextcloud-aio-mastercontainer:11000
       }
 
 volumes: # If you want to store the data on a different drive, see https://github.com/nextcloud/all-in-one#how-to-store-the-filesinstallation-on-a-separate-drive
