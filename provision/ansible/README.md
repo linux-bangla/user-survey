@@ -18,6 +18,7 @@ ansible-playbook main.yml
 
 ## To DO
 
+- [ ] Add `ufw` role to allow port 22, 8080, 80, 443
 - [ ] Add `ansible` user
 - [ ] Add `devsec.hardening` collection
 - [ ] Add `hifis.unattended_upgrades` role
