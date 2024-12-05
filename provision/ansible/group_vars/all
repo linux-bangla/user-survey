@@ -1,0 +1,15 @@
+common_packages:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - git
+    - gnupg-agent
+    - htop
+    - ncdu
+    - nload
+    - nvme-cli
+    - screen
+    - smartmontools
+    - software-properties-common
+    - tmux
+    - vim

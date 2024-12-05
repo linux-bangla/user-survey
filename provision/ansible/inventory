@@ -1,0 +1,6 @@
+[all:vars]
+ansible_connection=ssh
+ansible_user=root
+
+[nextcloud-aio]
+linuxsurvey

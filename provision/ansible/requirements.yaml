@@ -1,0 +1,9 @@
+---
+# collections:
+#   - name: devsec.hardening
+#     version: 8.6.0
+
+# roles:
+#   - name: hifis.unattended_upgrades
+#     version: v3.2.1
+#   - name: shibumi.systemd-conf
